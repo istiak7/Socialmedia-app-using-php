@@ -8,11 +8,11 @@
 </head>
 <body>
     <h1 style="text-align:center">Login page</h1>
-    <form action="../includes/login.create.php"  method="post">
+    <form action="login.create.php"  method="post">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="password">
         <button type="input">Submit</button>
-        <div><span><a href="../authentication/signin.php">Create a account</a></span></div>
+        <div><span><a href="../authentication/signup.php">Create a account</a></span></div>
     </form>
 </body>
 </html>

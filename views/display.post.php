@@ -41,9 +41,9 @@ $conn = $database->getConnection();
                 <br>
                 <strong>Created at:</strong> <?= htmlspecialchars($post['created_at']) ?>
                 <br><br>
-                <span class="comment"><a href="controllers/comment.view.php?post_id=<?= $post['post_id']; ?>">Comment</a></span>
+                <span class="comment"><a href="views/comment.view.php?post_id=<?= $post['post_id']; ?>">Comment</a></span>
 
-                <span class="comment"> <a href="controllers/display.comment.php?post_id=<?= $post['post_id']; ?>" >see all comments</a></span>
+                <span class="comment"> <a href="views/display.comment.php?post_id=<?= $post['post_id']; ?>" >see all comments</a></span>
           </div>
           <br><br> 
            

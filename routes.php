@@ -2,6 +2,6 @@
 return [
     '/'=>'controllers/index.php',
     '/posts'=>'controllers/posts.php',
-    '/friends'=>'controllers/friends.php',
+    '/flowers'=>'controllers/flowers.php',
     '/profile'=>'controllers/profile.php'
 ];
