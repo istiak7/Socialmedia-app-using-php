@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require 'post.class.php';
+require 'class/post.class.php';
 require '../core/Database.php';
 
 $database = new Database();

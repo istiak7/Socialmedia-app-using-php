@@ -3,7 +3,7 @@
 session_start();
 
 require '../core/Database.php';
-require 'comment.class.php';
+require 'class/comment.class.php';
 
 $db = new Database();
 $comment = new Comment($db);
