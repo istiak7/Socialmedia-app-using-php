@@ -4,7 +4,7 @@ session_start();
 require 'class/post.class.php';
 require '../core/Database.php';
 
-$database = new Database();
+$database = Database::getInstance();
 $post = new Post($database);
 
 try {

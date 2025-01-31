@@ -5,7 +5,7 @@ session_start();
 require '../core/Database.php';
 require '../includes/class/user.class.php';
 
-$database = new Database();
+$database = Database::getInstance();
 $conn = $database->getConnection();
 $user = new User($database);
 
@@ -22,7 +22,7 @@ try{
 
         else {
                 header("Location: http://localhost:8000/authentication/login.php");
-            }
+             }
         } 
 }
 catch (PDOException $e) {

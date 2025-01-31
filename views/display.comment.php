@@ -1,6 +1,8 @@
 <?php
+
 require '../core/Database.php';
-$database = new Database();
+$database = Database::getInstance();
+
 $conn = $database->getConnection();
 
     try {

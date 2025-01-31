@@ -5,7 +5,7 @@ session_start();
 require '../core/Database.php';
 require 'class/comment.class.php';
 
-$db = new Database();
+$db = Database::getInstance();
 $comment = new Comment($db);
 
 try {
