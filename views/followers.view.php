@@ -4,7 +4,7 @@
 
   <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <a href="views/flowers.display.php">View Flowers</a>
+      <a href="views/followers.display.php">View Flowers</a>
       <br>
     </div>
   </main>
