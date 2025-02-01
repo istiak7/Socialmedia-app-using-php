@@ -8,11 +8,12 @@ $conn = $database->getConnection();
 
     try {
 
-        $user_id = $_SESSION['user_id'];
-        $stmt = $conn->prepare("SELECT users.username
-        FROM users
-        INNER JOIN friendships ON friendships.receiver_id = users.id");
+        $user_name = $_SESSION['name'];
+        //echo $user_name . "\n";
+        $stmt = $conn->prepare("SELECT username , id FROM users WHERE username != :user_name");
+        $stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR); 
         $stmt->execute();
+    
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     } 
@@ -35,7 +36,13 @@ $conn = $database->getConnection();
 <?php foreach ($posts as $post): ?>
 
        <div class="inner_post">
-                 <li><?= htmlspecialchars($post['username']) ?> </li>
+                 <li><?= htmlspecialchars($post['username']) ?> 
+                 <form action="friendrequest.php" method="post">
+                 <input type="hidden" name="reciver_id" value="<?= $post['id'] ?>">
+                 <button type="input">Add</button>
+                 </form>
+                
+                </li>
         </div>
            
 <?php endforeach; ?>

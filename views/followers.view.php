@@ -4,7 +4,9 @@
 
   <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <a href="views/followers.display.php">View Flowers</a>
+      <a href="views/seefriendrequest.php">See Friend Requests</a><br>
+      <a href="views/followers.display.php">See all friends</a><br>
+      <a href="views/allpeople.display.php">See all people</a><br>
       <br>
     </div>
   </main>
