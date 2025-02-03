@@ -10,7 +10,7 @@
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <a href="/" class="<?=urlIs('/') ? "bg-gray-900 text-white":"text-gray-300"?>rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
               <a href="/posts" class="<?=urlIs('/posts')? "bg-gray-900 text-white":"text-gray-300"?>rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Post</a>
-              <a href="/followers" class="<?=urlIs('/followers')? "bg-gray-900 text-white":"text-gray-300"?>rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Followers</a>
+              <a href="/friends" class="<?=urlIs('/friends')? "bg-gray-900 text-white":"text-gray-300"?>rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Friends</a>
               <a href="/profile" class="<?=urlIs('/profile')? "bg-gray-900 text-white":"text-gray-300"?>rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Profile</a>
 
             </div>

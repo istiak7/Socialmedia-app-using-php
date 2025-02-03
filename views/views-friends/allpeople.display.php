@@ -1,7 +1,8 @@
 <?php 
 session_start();
 
-require '../core/Database.php';
+require_once __DIR__ . '/../../core/Database.php';
+
 
 $database = Database::getInstance();
 $conn = $database->getConnection();
@@ -38,7 +39,8 @@ $conn = $database->getConnection();
        <div class="inner_post">
                  <li><?= htmlspecialchars($post['username']) ?> 
                  <form action="friendrequest.php" method="post">
-                 <input type="hidden" name="reciver_id" value="<?= $post['id'] ?>">
+                 <input type="hidden" name="receiver_id" value="<?= $post['id'] ?>">
+                 <input type="hidden" name="receiver_name" value="<?= $post['username'] ?>">
                  <button type="input">Add</button>
                  </form>
                 

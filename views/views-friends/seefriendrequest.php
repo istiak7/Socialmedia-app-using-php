@@ -2,7 +2,7 @@
 
 session_start();
 
-require '../core/Database.php';
+require_once __DIR__.'/../../core/Database.php';
 
 $database = Database::getInstance();
 $conn = $database->getConnection();
@@ -12,7 +12,15 @@ $conn = $database->getConnection();
         $user_name = $_SESSION['name'];
         $user_id = $_SESSION['user_id'];
         //echo $user_id . "\n";die();
-        $stmt = $conn->prepare("SELECT sender_name,sender_id , receiver_id FROM friend_requests WHERE receiver_id = :user_id AND status = 'pending'");
+        $stmt = $conn->prepare(
+
+           "SELECT users.username ,friend_requests.sender_id , friend_requests.receiver_id
+            FROM users 
+            INNER JOIN friend_requests 
+            ON (friend_requests.receiver_id = :user_id) AND (users.id = sender_id)
+            WHERE friend_requests.status = 'pending'
+
+        ");
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR); 
         $stmt->execute();
     
@@ -38,11 +46,16 @@ $conn = $database->getConnection();
 <?php foreach ($posts as $post): ?>
     <div class="inner_post">
     <li>
-        <?= htmlspecialchars($post['sender_name']) ?>  
+        <?= htmlspecialchars($post['username']) ?>  
         <form action="acceptrequest.php" method="post">
             <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($post['receiver_id']) ?>">
             <input type="hidden" name="sender_id" value="<?= htmlspecialchars($post['sender_id']) ?>">
             <button type="submit">Confirm</button>
+        </form>
+        <form action="declinerequest.php" method="post">
+            <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($post['receiver_id']) ?>">
+            <input type="hidden" name="sender_id" value="<?= htmlspecialchars($post['sender_id']) ?>">
+            <button type="submit">Decline</button>
         </form>
     </li>
 </div>

@@ -7,17 +7,17 @@ $receiver_id = $_POST['receiver_id'];
 // echo $sender_id . " " . $receiver_id ."\n";
 // die();
 
-require '../core/Database.php';
-require '../includes/class/user.class.php';
+require_once __DIR__. '/../../core/Database.php';
+require_once __DIR__.'/../../includes/class/user.class.php';
 
 $database = Database::getInstance();
 $conn = $database->getConnection();
 $user = new User($database);
 
     try {
-        if($user->acceptFriendRequest($sender_id , $receiver_id)){
-            echo "successfully request Accepted!";
-            header("Location: http://localhost:8000/views/seefriendrequest.php");
+        if($user->declineFriendRequest($sender_id , $receiver_id)){
+            echo "successfully request decline!";
+            header("Location: http://localhost:8000/views/views-friends/seefriendrequest.php");
         }
     } 
     
