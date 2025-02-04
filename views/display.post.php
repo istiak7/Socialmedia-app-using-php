@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\type;
+
 require './core/Database.php';
 $database = Database::getInstance();
 $conn = $database->getConnection();
@@ -7,14 +9,15 @@ $conn = $database->getConnection();
 try {
 
     $limit = 3; // per page number of post
-    $result = $conn->query("SELECT COUNT(post_id) AS total FROM posts");
-    $row = $result->fetch();
+    $number_of_post = $conn->query("SELECT COUNT(post_id) AS total FROM posts");
+    $row = $number_of_post->fetch();
     $total_post = $row['total'];
-
+    
     $total_pages = ceil($total_post / $limit);
-    $page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $start = ($page - 1) * $limit;
 
+    $page = isset($_GET['page']) ?  (int)$_GET['page'] : 1 ;
+    if($page <= 0 || $page > $total_pages) $page = 1 ;
+    $start = ($page - 1) * $limit;
 
     $stmt = $conn->prepare("SELECT posts.post_id,posts.content,posts.created_at,users.username
         FROM posts
