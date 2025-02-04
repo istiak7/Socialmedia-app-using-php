@@ -30,18 +30,18 @@ $conn = $database->getConnection();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posts</title>
-   <link rel="stylesheet" href="./poststyle/post_view.css">
+   <link rel="stylesheet" href="/poststyle/post_view.css">
 </head>
 <body>
 
 <?php foreach ($posts as $post): ?>
 
-       <div class="inner_post">
+       <div>
                  <li><?= htmlspecialchars($post['username']) ?> 
                  <form action="friendrequest.php" method="post">
                  <input type="hidden" name="receiver_id" value="<?= $post['id'] ?>">
-                 <input type="hidden" name="receiver_name" value="<?= $post['username'] ?>">
-                 <button type="input">Add</button>
+                 <input type="hidden" name="receiver_name"  value="<?= $post['username'] ?>">
+                 <button type="input" class="addButton">Add</button>
                  </form>
                 
                 </li>

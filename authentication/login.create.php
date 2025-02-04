@@ -21,6 +21,7 @@ try{
             }
 
         else {
+                $_SESSION['login_error'] = 'Give a valid email or password!';
                 header("Location: http://localhost:8000/authentication/login.php");
              }
         } 

@@ -30,3 +30,19 @@
 .comment:active{
     opacity: 0.4;
 }
+.addButton{
+    background-color: rgb(4, 171, 16);
+    color: white;
+    font-weight: bold;
+    border: none;
+    width: 80px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.addButton:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}

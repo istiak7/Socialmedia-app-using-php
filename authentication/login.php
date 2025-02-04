@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,10 @@
     <form action="login.create.php"  method="post">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="password">
+        <?php if(isset($_SESSION['login_error'])){ ?>
+           <p style="color: red;margin-bottom:0%"><?php echo $_SESSION['login_error']; 
+           unset($_SESSION['login_error'])?></p>
+      <?php }?>
         <button type="input">Submit</button>
         <div><span><a href="../authentication/signup.php">Create a account</a></span></div>
     </form>

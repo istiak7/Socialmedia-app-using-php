@@ -12,7 +12,7 @@ class User
 
     public function userRegister($username, $email, $password)
     {
-
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // pasword encripted
         $query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
         $stmt = $this->database->prepare($query);
         $stmt->execute([$username, $email, $password]);
@@ -24,7 +24,6 @@ class User
         $stmt = $this->database->prepare($query);
         $stmt->execute([$email]);
         $user = $stmt->fetch();
-
         if ($user && password_verify($password, $user['password'])) {
 
             // Authentication successful
@@ -52,6 +51,29 @@ class User
         $stmt = $this->database->prepare($query);
         $stmt->execute([$username]);
         return (bool) $stmt->fetch();
+    }
+
+    public function predefineUsernameRules($username)
+    {
+        $value = preg_match('/[a-zA-Z]/',$username) && preg_match('/[0-9]/',$username);
+        if(empty($value)){
+            return "one digit and one letter";
+        }
+        $value = preg_match('/[^a-zA-Z0-9]/',$username);
+        if(empty($value)){
+            return "special character";
+        }
+
+    }
+
+    public function checkPasswordValidation($password){
+        if(empty($password) || strlen($password) < 6){
+            return "empty or less than 6";
+        }
+        else if(strlen($password) > 15){
+            return "too large";
+        }
+        
     }
 
     public function sendFriendRequest($sender_id, $receiver_id)
@@ -92,9 +114,11 @@ class User
     }
 
     public function declineFriendRequest($sender_id , $receiver_id){
+
         $query = "DELETE FROM friend_requests WHERE sender_id = ? AND receiver_id = ?";
         $stmt = $this->database->prepare($query);
         $stmt->execute([$sender_id, $receiver_id]);
         return true;
+
     }
 }
