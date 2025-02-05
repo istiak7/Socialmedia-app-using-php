@@ -39,7 +39,7 @@ $conn = $database->getConnection();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posts</title>
-   <link rel="stylesheet" href="./poststyle/post_view.css">
+   <link rel="stylesheet" href="/poststyle/post_view.css">
 </head>
 <body>
 
@@ -50,12 +50,12 @@ $conn = $database->getConnection();
         <form action="acceptrequest.php" method="post">
             <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($post['receiver_id']) ?>">
             <input type="hidden" name="sender_id" value="<?= htmlspecialchars($post['sender_id']) ?>">
-            <button type="submit">Confirm</button>
+            <button type="submit"class="addButton">Confirm</button>
         </form>
         <form action="declinerequest.php" method="post">
             <input type="hidden" name="receiver_id" value="<?= htmlspecialchars($post['receiver_id']) ?>">
             <input type="hidden" name="sender_id" value="<?= htmlspecialchars($post['sender_id']) ?>">
-            <button type="submit">Decline</button>
+            <button type="submit"class="declineButton">Decline</button>
         </form>
     </li>
 </div>
