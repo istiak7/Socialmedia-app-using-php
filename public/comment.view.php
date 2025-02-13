@@ -1,3 +1,5 @@
+<?php $post_id = $_GET['post_id'];?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +9,11 @@
     <title>signin</title>
 </head>
 <body>
-    <h1 style="text-align:center">Write a post</h1>
-    <form action="../Models/post_model.php"  method="post">
+    <h1 style="text-align:center">Comment on post</h1>
+    <form action="../includes/comment.create.php" method="post">
+    <input type="hidden" name="post_id" value="<?= $post_id; ?>">
         <textarea name="content" id=""></textarea>
-        <button type="input">Post</button>
+        <button type="input">sent</button>
     </form>
 </body>
 </html>

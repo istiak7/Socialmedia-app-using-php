@@ -3,8 +3,8 @@
 session_start();
 
 require '../core/Database.php';
-require 'class/comment.class.php';
-
+// require 'class/comment.class.php';
+require __DIR__.'/../Models/comment_model.php';
 $db = Database::getInstance();
 $comment = new Comment($db);
 

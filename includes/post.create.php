@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-require 'class/post.class.php';
+// require 'class/post.class.php';
+require __DIR__.'/../Models/post_model.php';
 require '../core/Database.php';
 
 $database = Database::getInstance();
